@@ -16,26 +16,6 @@ class Libro:
         return {'id':self.id,'titulo':self.titulo,'genero':self.genero,
                          'ISBN':self.ISBN,'editorial':self.editorial,'autores':self.autores}
 
-def registrar_libros(nombre_archivo):
-    cantidad=int(input("¿Cuantos libros desea registrar?"))
-    campos=['Id',"Título",'Género','ISBN','Editorial','Autores']
-
-    if not pathlib.Path(nombre_archivo).exists():
-        with open(nombre_archivo,"w", newline='') as archivo_csv:
-            writer = csv.DictWriter(archivo_csv,fieldnames=campos)
-            writer.writeheader()
-
-    with open(nombre_archivo,"a",newline="") as archivo_csv:
-        writer=csv.DictWriter(archivo_csv,fieldnames=campos)
-        for i in range (cantidad):
-            os.system("cls")
-            Id=input("Id:")
-            Título=input("Título:")
-            Género=input("Género:")
-            ISBN=input("ISBN:")
-            Editorial=input("Editorial:")
-            Autores=input("Autores:")
-            writer.writerow({"Id":Id,"Título":Título,"Género":Género,"ISBN":ISBN,"Editorial":Editorial,"Autores":Autores})
 
 def registrar_libros(nombre_archivo):
     cantidad=int(input("¿Cuantos libros desea registrar?"))
