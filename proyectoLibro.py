@@ -1,5 +1,15 @@
 class Libro:
-    pass
+    def __init__(self, id: int, titulo: str, genero: str, ISBN: str, editorial: str, autores: list):
+        self.id = id
+        self.titulo = titulo
+        self.genero = genero
+        self.ISBN = ISBN
+        self.editorial = editorial
+        self.autores = autores
+
+    def descripcion_libro(self)->dict:
+        return {'id':self.id,'titulo':self.titulo,'genero':self.genero,
+                         'ISBN':self.ISBN,'editorial':self.editorial,'autores':self.autores}
 
 
 
