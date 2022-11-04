@@ -1,3 +1,8 @@
+import os
+import csv
+import pathlib
+
+
 class Libro:
     def __init__(self, id: int, titulo: str, genero: str, ISBN: str, editorial: str, autores: list):
         self.id = id
@@ -11,7 +16,65 @@ class Libro:
         return {'id':self.id,'titulo':self.titulo,'genero':self.genero,
                          'ISBN':self.ISBN,'editorial':self.editorial,'autores':self.autores}
 
+def registrar_libros(nombre_archivo):
+    cantidad=int(input("¿Cuantos libros desea registrar?"))
+    campos=['Id',"Título",'Género','ISBN','Editorial','Autores']
 
+    if not pathlib.Path(nombre_archivo).exists():
+        with open(nombre_archivo,"w", newline='') as archivo_csv:
+            writer = csv.DictWriter(archivo_csv,fieldnames=campos)
+            writer.writeheader()
+
+    with open(nombre_archivo,"a",newline="") as archivo_csv:
+        writer=csv.DictWriter(archivo_csv,fieldnames=campos)
+        for i in range (cantidad):
+            os.system("cls")
+            Id=input("Id:")
+            Título=input("Título:")
+            Género=input("Género:")
+            ISBN=input("ISBN:")
+            Editorial=input("Editorial:")
+            Autores=input("Autores:")
+            writer.writerow({"Id":Id,"Título":Título,"Género":Género,"ISBN":ISBN,"Editorial":Editorial,"Autores":Autores})
+
+def registrar_libros(nombre_archivo):
+    cantidad=int(input("¿Cuantos libros desea registrar?"))
+    campos=['Id',"Título",'Género','ISBN','Editorial','Autores']
+
+    if not pathlib.Path(nombre_archivo).exists():
+        with open(nombre_archivo,"w", newline='') as archivo_csv:
+            writer = csv.DictWriter(archivo_csv,fieldnames=campos)
+            writer.writeheader()
+
+    with open(nombre_archivo,"a",newline="") as archivo_csv:
+        writer=csv.DictWriter(archivo_csv,fieldnames=campos)
+        for i in range (cantidad):
+            os.system("cls")
+            Id=input("Id:")
+            Título=input("Título:")
+            Género=input("Género:")
+            ISBN=input("ISBN:")
+            Editorial=input("Editorial:")
+            Autores=input("Autores:")
+            writer.writerow({"Id":Id,"Título":Título,"Género":Género,"ISBN":ISBN,"Editorial":Editorial,"Autores":Autores})
+
+def recuperar_libros(nombre_archivo):
+    os.system("cls")
+    print("Libros registrados")
+    with open(nombre_archivo,"r",newline="") as archivo_csv:
+        reader=csv.DictReader(archivo_csv)
+        for linea in reader:
+            for campo,valor in linea.items():
+                print(f"{campo}:{valor}")
+            print("~"*50)
+
+def main():
+    archivo="libros_encabezado.csv"
+    registrar_libros(archivo)
+    recuperar_libros(archivo)
+
+if __name__=="__main__":
+    main()
 
 
 def leer_archivo_disco():
