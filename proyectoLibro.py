@@ -15,12 +15,12 @@ class Libro:
 
     def descripcion_libro(self) -> dict:
         return {'id': self.id, 'titulo': self.titulo, 'genero': self.genero,
-                'ISBN': self.ISBN, 'editorial': self.editorial, 'autores': self.autores}
+                'ISBN': self.ISBN, 'editorial': self.editorial, 'autores': str(self.autores)}
 
 
 # termina la clase libro
 
-def leer_archivos_disco(file):
+def leer_archivos_disco(file:str)->list:
     lista = []
     os.system("cls")
     with open(file, "r", newline="") as archivo_csv:
@@ -30,7 +30,7 @@ def leer_archivos_disco(file):
         return lista
 
 
-def listar_libros(lista):
+def listar_libros(lista:list):
     os.system("cls")
     for i in lista:
         print(i)
@@ -150,8 +150,12 @@ def main():
             genero = input("Género:")
             ISBN = input("ISBN:")
             editorial = input("Editorial:")
-            autores = input("Autores:")
-            libro = Libro(Id, titulo, genero, ISBN, editorial, autores)
+            numero_autores=int(input("Cuantos autores hay?: "))
+            lista_autores=[]
+            for i in range(numero_autores):
+                autor = input(f"Autor {i}:")
+                lista_autores.append(autor)
+            libro = Libro(Id, titulo, genero, ISBN, editorial, lista_autores)
             agregar_libro(lista_libros, libro)
 
         elif opcion == 4:
@@ -210,6 +214,7 @@ def main():
         elif opcion == 10:
             guardar_libro(file, lista_libros)
         elif opcion == 11:
+            os.system("cls")
             enEjecucion = False
         else:
             print("opción no válida, ingrese nuevamente(de 1 a 11)")
