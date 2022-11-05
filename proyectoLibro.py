@@ -1,7 +1,5 @@
 import os
 import csv
-import pathlib
-
 
 # clase libro
 class Libro:
@@ -114,6 +112,13 @@ def ordenar_por_titulo(lista):
             if i==j['titulo']:
                 print(j)
                 
+def buscar_libro_numero_autores(lista,numero_autores):
+    for i in lista:
+        string_autores=i["autores"]
+        lista_autores = eval(string_autores)
+        cant_autores=len(lista_autores)
+        if cant_autores==numero_autores:
+            print(i)
 
 
 def main():
@@ -206,9 +211,11 @@ def main():
                 genero = input("Ingrese el Género a buscar: ")
                 busqueda_genero(lista_libros, genero)
 
-
         elif opcion == 8:
-            pass
+            os.system("cls")
+            num_autores=int(input("Digite la cantidad de autores a buscar: "))
+            buscar_libro_numero_autores(lista_libros,num_autores)
+
         elif opcion == 9:
             pass
         elif opcion == 10:
