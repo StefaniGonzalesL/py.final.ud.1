@@ -82,11 +82,13 @@ def buscar_libro_titulo(lista, titulo):
 
 #Buscar libro por autor y editorial o género
 
-
-def busqueda_autores (lista,autores):
+def busqueda_autores (lista,autor):
     for i in lista:
-        if i ['autores'][0]== autores:
-            print(i)
+        string_autores = i["autores"]
+        lista_autores=eval(string_autores)
+        for j in lista_autores:
+            if j==autor:
+                print(i)
 
 def busqueda_editorial (lista,editorial):
     for i in lista: 
@@ -174,8 +176,8 @@ def main():
                 "\n Opcion 1 : Autor \n Opcion 2 : Editorial: \n Opcion 3 : Genero \n"))
 
             if opciones_busqueda == 1:
-                autores = input("Ingrese el Autor(es) del libro a buscar: ")
-                busqueda_autores(lista_libros, autores)
+                autor = input("Ingrese el Autor(es) del libro a buscar: ")
+                busqueda_autores(lista_libros, autor)
 
             if opciones_busqueda == 2:
                 editorial = input("Ingrese la Editorial a buscar: ")
