@@ -27,7 +27,6 @@ def leer_archivos_disco(file):
         reader = csv.DictReader(archivo_csv)
         for linea in reader:
             lista.append(linea)
-        print("lectura correcta")
         return lista
 
 
@@ -102,6 +101,19 @@ def busqueda_genero (lista,genero):
             print(i)
 
 
+#ordenar libro por titulo
+
+def ordenar_por_titulo(lista):
+    lista_titulo=[]
+    for i in lista:
+        lista_titulo.append(i['titulo'])
+    lista_titulo.sort()      #ordena la lista
+
+    for i in lista_titulo:
+        for j in lista:
+            if i==j['titulo']:
+                print(j)
+                
 
 
 def main():
@@ -111,6 +123,7 @@ def main():
 
     while (enEjecucion):
         input("holaaa presione cuaquier tecla para continuar")
+        os.system("cls")
         print("Opciones: ")
         print("1: Leer archivo de disco duro")
         print("2: Listar libros")
@@ -127,24 +140,25 @@ def main():
         
         if opcion == 1:
             leer_archivos_disco(file)
+            print("lectura correcta")        
         elif opcion == 2:
             listar_libros(lista_libros)
         elif opcion == 3:
             os.system("cls")
-            id = input("Id:")
+            Id = input("Id:")
             titulo = input("Título:")
             genero = input("Género:")
             ISBN = input("ISBN:")
             editorial = input("Editorial:")
             autores = input("Autores:")
-            libro = Libro(id, titulo, genero, ISBN, editorial, autores)
+            libro = Libro(Id, titulo, genero, ISBN, editorial, autores)
             agregar_libro(lista_libros, libro)
 
         elif opcion == 4:
             os.system("cls")
-            id = int(input("Ingrese el Id. del libro a eliminar: \n"))
-            eliminar_libro(lista_libros,file,id)
-            print(f"Se elimino el libro con el \"id.\" {id}")
+            Id = int(input("Ingrese el Id. del libro a eliminar: \n"))
+            eliminar_libro(lista_libros,file,Id)
+            print(f"Se elimino el libro con el \"id.\" {Id}")
             
             
         elif opcion == 5:
@@ -165,7 +179,8 @@ def main():
         
 
         elif opcion == 6:
-            pass
+            os.system("cls")
+            ordenar_por_titulo(lista_libros)
         elif opcion == 7:
             
             os.system("cls")
