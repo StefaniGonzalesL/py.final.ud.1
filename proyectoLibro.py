@@ -80,6 +80,28 @@ def buscar_libro_titulo(lista, titulo):
         if i ['titulo']== titulo:
             print(i)
 
+#Buscar libro por autor y editorial o género
+
+
+def busqueda_autores (lista,autores):
+    for i in lista:
+        if i ['autores'][0]== autores:
+            print(i)
+
+def busqueda_editorial (lista,editorial):
+    for i in lista: 
+        if i ['editorial']== editorial:
+            print(i)
+
+
+def busqueda_genero (lista,genero):
+    for i in lista:
+        if i ['genero']== genero:
+            print(i)
+
+
+
+
 def main():
     enEjecucion = True
     file = "libros.csv"
@@ -143,7 +165,27 @@ def main():
         elif opcion == 6:
             pass
         elif opcion == 7:
-            pass
+            
+            os.system("cls")
+            opciones_busqueda = int(input("Ingresa una opcion: \n Opcion 1 : Autor \n Opcion 2 : Editorial \n Opcion 3 : Genero \n"))
+
+            while opciones_busqueda < 1 or opciones_busqueda > 3:
+                opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida"
+                "\n Opcion 1 : Autor \n Opcion 2 : Editorial: \n Opcion 3 : Genero \n"))
+
+            if opciones_busqueda == 1:
+                autores = input("Ingrese el Autor(es) del libro a buscar: ")
+                busqueda_autores(lista_libros, autores)
+
+            if opciones_busqueda == 2:
+                editorial = input("Ingrese la Editorial a buscar: ")
+                busqueda_editorial(lista_libros, editorial)
+            
+            if opciones_busqueda == 3:
+                genero = input("Ingrese el Género a buscar: ")
+                busqueda_genero(lista_libros, genero)
+
+
         elif opcion == 8:
             pass
         elif opcion == 9:
