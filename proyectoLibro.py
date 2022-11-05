@@ -27,7 +27,6 @@ def leer_archivos_disco(file):
         reader = csv.DictReader(archivo_csv)
         for linea in reader:
             lista.append(linea)
-        print("lectura correcta")
         return lista
 
 
@@ -56,6 +55,7 @@ def main():
     lista_libros = leer_archivos_disco(file)
 
     while (enEjecucion):
+        input("holaaa presione cuaquier tecla para continuar")
         print("Opciones: ")
         print("1: Leer archivo de disco duro")
         print("2: Listar libros")
@@ -69,8 +69,10 @@ def main():
         print("10: Guardar libros en archivo de disco duro (.txt o csv)")
         print("11: Salir")
         opcion = int(input("Elige una opción (de 1 a 10): "))
+        
         if opcion == 1:
             leer_archivos_disco(file)
+            print("lectura correcta")
         elif opcion == 2:
             listar_libros(lista_libros)
         elif opcion == 3:
