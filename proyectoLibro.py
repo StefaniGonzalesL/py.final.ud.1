@@ -27,7 +27,7 @@ def leer_archivos_disco(file):
         reader = csv.DictReader(archivo_csv)
         for linea in reader:
             lista.append(linea)
-        print("lectura correcta")
+        
         return lista
 
 
@@ -49,6 +49,24 @@ def guardar_libro(file, lista):
         writer.writerow(lista[-1])
         print("el libro se guardó correctamente en el disco")
 
+#Elimininar libro
+
+def eliminar_libro(lista,file,id):
+    for i in lista:
+        if int(i['id'])==id:
+            lista.pop(lista.index(i))
+    escribe_archivo(file,lista)
+
+
+def escribe_archivo(file,lista):
+    campos=['id','titulo','genero','ISBN','editorial','autores']
+    with open(file, "w", newline='') as archivo_csv:
+        writer = csv.DictWriter(archivo_csv, fieldnames=campos)
+        writer.writeheader()
+    with open(file,"a",newline='') as archivo_csv:
+        writer=csv.DictWriter(archivo_csv,fieldnames=campos)
+        for i in lista:
+            writer.writerow(lista[lista.index(i)])
 
 def main():
     enEjecucion = True
@@ -71,6 +89,7 @@ def main():
         opcion = int(input("Elige una opción (de 1 a 10): "))
         if opcion == 1:
             leer_archivos_disco(file)
+            print("lectura correcta")
         elif opcion == 2:
             listar_libros(lista_libros)
         elif opcion == 3:
@@ -85,7 +104,12 @@ def main():
             agregar_libro(lista_libros, libro)
 
         elif opcion == 4:
-            pass
+            os.system("cls")
+            id = int(input("Ingrese el Id. del libro a eliminar: \n"))
+            eliminar_libro(lista_libros,file,id)
+            print(f"Se elimino el libro con el \"id.\" {id}")
+            
+            
         elif opcion == 5:
             pass
         elif opcion == 6:
