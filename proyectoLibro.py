@@ -68,6 +68,18 @@ def escribe_archivo(file,lista):
         for i in lista:
             writer.writerow(lista[lista.index(i)])
 
+#Buscar libro por ISBN y titulo
+
+def buscar_libro_ISBN(lista,ISBN):
+    for i in lista:
+        if i ['ISBN']== ISBN:
+            print(i)
+
+def buscar_libro_titulo(lista, titulo):
+    for i in lista:
+        if i ['titulo']== titulo:
+            print(i)
+
 def main():
     enEjecucion = True
     file = "libros.csv"
@@ -112,7 +124,22 @@ def main():
             
             
         elif opcion == 5:
-            pass
+            os.system("cls")
+            opciones_busqueda = int(input("Ingresa una opcion: \n Opcion 1 : ISBN \n Opcion 2 : Titulo \n"))
+
+            while opciones_busqueda < 1 or opciones_busqueda > 2:
+                opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida"
+                "\n Opcion 1 : ISBN \n Opcion 2 : Titulo: \n"))
+
+            if opciones_busqueda == 1:
+                ISBN = input("Ingrese el ISBN del libro a buscar: ")
+                buscar_libro_ISBN(lista_libros, ISBN)
+
+            if opciones_busqueda == 2:
+                titulo = input("Ingrese el Titulo del libro a buscar: ")
+                buscar_libro_titulo(lista_libros, titulo)
+        
+
         elif opcion == 6:
             pass
         elif opcion == 7:
