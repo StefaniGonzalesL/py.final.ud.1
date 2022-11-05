@@ -2,7 +2,8 @@ import os
 import csv
 import pathlib
 
-#clase libro
+
+# clase libro
 class Libro:
     def __init__(self, id: int, titulo: str, genero: str, ISBN: str, editorial: str, autores: list):
         self.id = id
@@ -12,46 +13,49 @@ class Libro:
         self.editorial = editorial
         self.autores = autores
 
-    def descripcion_libro(self)->dict:
-        return {'id':self.id,'titulo':self.titulo,'genero':self.genero,
-                         'ISBN':self.ISBN,'editorial':self.editorial,'autores':self.autores}
+    def descripcion_libro(self) -> dict:
+        return {'id': self.id, 'titulo': self.titulo, 'genero': self.genero,
+                'ISBN': self.ISBN, 'editorial': self.editorial, 'autores': self.autores}
 
 
-#termina la clase libro
+# termina la clase libro
 
 def leer_archivos_disco(file):
-    lista=[]
+    lista = []
     os.system("cls")
-    with open(file,"r",newline="") as archivo_csv:
-        reader=csv.DictReader(archivo_csv)
+    with open(file, "r", newline="") as archivo_csv:
+        reader = csv.DictReader(archivo_csv)
         for linea in reader:
             lista.append(linea)
         print("lectura correcta")
         return lista
+
 
 def listar_libros(lista):
     os.system("cls")
     for i in lista:
         print(i)
 
-def agregar_libro(lista:list,libro:Libro):
+
+def agregar_libro(lista: list, libro: Libro):
     lista.append(libro.descripcion_libro())
     print("El libro se agregó a la lista")
 
+
 def guardar_libro(file, lista):
-    campos=['id','titulo','genero','ISBN','editorial','autores']
-    with open(file,"a",newline='') as archivo_csv:
-        writer=csv.DictWriter(archivo_csv,fieldnames=campos)
+    campos = ['id', 'titulo', 'genero', 'ISBN', 'editorial', 'autores']
+    with open(file, "a", newline='') as archivo_csv:
+        writer = csv.DictWriter(archivo_csv, fieldnames=campos)
         writer.writerow(lista[-1])
         print("el libro se guardó correctamente en el disco")
 
 
-def main():    
-    enEjecucion=True
-    file="libros.csv"
-    lista_libros=leer_archivos_disco(file)
+def main():
+    enEjecucion = True
+    file = "libros.csv"
+    lista_libros = leer_archivos_disco(file)
 
-    while(enEjecucion):
+    while (enEjecucion):
         print("Opciones: ")
         print("1: Leer archivo de disco duro")
         print("2: Listar libros")
@@ -64,41 +68,41 @@ def main():
         print("9: Editar o actualizar datos de un libro (título, género, ISBN, editorial y autores)")
         print("10: Guardar libros en archivo de disco duro (.txt o csv)")
         print("11: Salir")
-        opcion=int(input("Elige una opción (de 1 a 10): "))
-        if opcion==1:
-            leer_archivos_disco(file)       
-        elif opcion==2:
+        opcion = int(input("Elige una opción (de 1 a 10): "))
+        if opcion == 1:
+            leer_archivos_disco(file)
+        elif opcion == 2:
             listar_libros(lista_libros)
-        elif opcion==3:
+        elif opcion == 3:
             os.system("cls")
-            id=input("Id:")
-            titulo=input("Título:")
-            genero=input("Género:")
-            ISBN=input("ISBN:")
-            editorial=input("Editorial:")
-            autores=input("Autores:")
-            libro=Libro(id,titulo,genero,ISBN,editorial,autores)
-            agregar_libro(lista_libros,libro)
-            
-        elif opcion==4:
+            id = input("Id:")
+            titulo = input("Título:")
+            genero = input("Género:")
+            ISBN = input("ISBN:")
+            editorial = input("Editorial:")
+            autores = input("Autores:")
+            libro = Libro(id, titulo, genero, ISBN, editorial, autores)
+            agregar_libro(lista_libros, libro)
+
+        elif opcion == 4:
             pass
-        elif opcion==5:
+        elif opcion == 5:
             pass
-        elif opcion==6:
+        elif opcion == 6:
             pass
-        elif opcion==7:
+        elif opcion == 7:
             pass
-        elif opcion==8:
+        elif opcion == 8:
             pass
-        elif opcion==9:
+        elif opcion == 9:
             pass
-        elif opcion==10:
-            guardar_libro(file,lista_libros)
-        elif opcion==11:
-            enEjecucion=False
+        elif opcion == 10:
+            guardar_libro(file, lista_libros)
+        elif opcion == 11:
+            enEjecucion = False
         else:
             print("opción no válida, ingrese nuevamente(de 1 a 11)")
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
