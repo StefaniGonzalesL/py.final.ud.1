@@ -1,6 +1,5 @@
 id,titulo,genero,ISBN,editorial,autores
-4,Hola Mundo,aventura,0-7645-2641-3,Alba,"['Moises', 'Oswaldo', 'Juan','Stefany']"
-11,Hello Word,ficcion,452-6255879-009,Alba,"['Moises', 'Pancho', 'Pepe']"
-14,Zalomo,ficcion,452-6255879-009,Alba,"['Oswaldo', 'Stefany']"
-14,Abcccs,ficcion,452-6255879-009,Alba,"['Moises','Stefany']"
-34,No sé,tampoco,8777777,NNN,"['moise', 'stef', 'oswl']"
+4,Hola Mundo,aventura,0-7645-2641-3,Alba,"['ddd', 'fff']"
+3,Moises y los diez Mandamientos,ficcion,452-6255879-009,Alba,['moises']
+123,Zalomo,ficcion,766-877,Alba,"['Oswaldo', 'Stefany']"
+14,Abcccs,ficcion,766-877,Alba,"['Moises','Stefany']"

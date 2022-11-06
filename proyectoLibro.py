@@ -120,6 +120,12 @@ def buscar_libro_numero_autores(lista,numero_autores):
         if cant_autores==numero_autores:
             print(i)
 
+def editar(file,lista,id,parametro_editar,valor):
+    for i in lista:
+        if int(i["id"])==id:
+            i[parametro_editar]=valor
+    escribe_archivo(file,lista)
+
 
 def main():
     enEjecucion = True
@@ -158,7 +164,7 @@ def main():
             numero_autores=int(input("Cuantos autores hay?: "))
             lista_autores=[]
             for i in range(numero_autores):
-                autor = input(f"Autor {i}:")
+                autor = input(f"Autor {i+1}:")
                 lista_autores.append(autor)
             libro = Libro(Id, titulo, genero, ISBN, editorial, lista_autores)
             agregar_libro(lista_libros, libro)
@@ -217,7 +223,43 @@ def main():
             buscar_libro_numero_autores(lista_libros,num_autores)
 
         elif opcion == 9:
-            pass
+            os.system("cls")
+            Id=int(input("Ingrese el Id del libro a editar: "))
+            parametro_editar=""
+
+            print("Qué parámetro desea editar: ")
+            print("1. Id")
+            print("2. Título")
+            print("3. Género")
+            print("4. ISBN")
+            print("5. Editorial")
+            print("6. Autores")
+
+            opcionIngresada=int(input("\n"))
+            if opcionIngresada==1:
+                parametro_editar="id"
+            elif opcionIngresada==2:
+                parametro_editar="titulo"
+            elif opcionIngresada==3:
+                parametro_editar="genero"
+            elif opcionIngresada==4:
+                parametro_editar="ISBN"
+            elif opcionIngresada==5:
+                parametro_editar="editorial"
+            elif opcionIngresada==6:
+                parametro_editar="autores"
+                numero_autores=int(input("Cuantos autores hay?: "))
+                lista_autores=[]
+                for i in range(numero_autores):
+                    autor = input(f"Autor {i+1}:")
+                    lista_autores.append(autor)
+                reemplazo=str(lista_autores)
+
+            if opcionIngresada!=6:
+                reemplazo=input(f"Ingrese el nuevo dato para {parametro_editar}: ")
+
+            editar(file,lista_libros,Id,parametro_editar,reemplazo)
+
         elif opcion == 10:
             guardar_libro(file, lista_libros)
         elif opcion == 11:
