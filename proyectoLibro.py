@@ -39,7 +39,7 @@ def agregar_libro(lista: list, libro: Libro):
     print("El libro se agregó a la lista")
 
 
-def guardar_libro(file, lista):
+def guardar_libro(file:str, lista:list):
     campos = ['id', 'titulo', 'genero', 'ISBN', 'editorial', 'autores']
     with open(file, "a", newline='') as archivo_csv:
         writer = csv.DictWriter(archivo_csv, fieldnames=campos)
@@ -48,14 +48,14 @@ def guardar_libro(file, lista):
 
 #Elimininar libro
 
-def eliminar_libro(lista,file,id):
+def eliminar_libro(lista:list,file:str,id:int):
     for i in lista:
         if int(i['id'])==id:
             lista.pop(lista.index(i))
     escribe_archivo(file,lista)
 
 
-def escribe_archivo(file,lista):
+def escribe_archivo(file:str,lista:list):
     campos=['id','titulo','genero','ISBN','editorial','autores']
     with open(file, "w", newline='') as archivo_csv:
         writer = csv.DictWriter(archivo_csv, fieldnames=campos)
@@ -67,19 +67,19 @@ def escribe_archivo(file,lista):
 
 #Buscar libro por ISBN y titulo
 
-def buscar_libro_ISBN(lista,ISBN):
+def buscar_libro_ISBN(lista:list,ISBN:str):
     for i in lista:
         if i ['ISBN']== ISBN:
             print(i)
 
-def buscar_libro_titulo(lista, titulo):
+def buscar_libro_titulo(lista:list, titulo:str):
     for i in lista:
         if i ['titulo']== titulo:
             print(i)
 
 #Buscar libro por autor y editorial o género
 
-def busqueda_autores (lista,autor):
+def busqueda_autores (lista:list,autor:str):
     for i in lista:
         string_autores = i["autores"]
         lista_autores=eval(string_autores)
@@ -87,13 +87,13 @@ def busqueda_autores (lista,autor):
             if j==autor:
                 print(i)
 
-def busqueda_editorial (lista,editorial):
+def busqueda_editorial (lista:list,editorial:str):
     for i in lista: 
         if i ['editorial']== editorial:
             print(i)
 
 
-def busqueda_genero (lista,genero):
+def busqueda_genero (lista:list,genero:str):
     for i in lista:
         if i ['genero']== genero:
             print(i)
@@ -101,7 +101,7 @@ def busqueda_genero (lista,genero):
 
 #ordenar libro por titulo
 
-def ordenar_por_titulo(lista):
+def ordenar_por_titulo(lista:list):
     lista_titulo=[]
     for i in lista:
         lista_titulo.append(i['titulo'])
@@ -112,7 +112,7 @@ def ordenar_por_titulo(lista):
             if i==j['titulo']:
                 print(j)
                 
-def buscar_libro_numero_autores(lista,numero_autores):
+def buscar_libro_numero_autores(lista:list,numero_autores:int):
     for i in lista:
         string_autores=i["autores"]
         lista_autores = eval(string_autores)
@@ -120,7 +120,7 @@ def buscar_libro_numero_autores(lista,numero_autores):
         if cant_autores==numero_autores:
             print(i)
 
-def editar(file,lista,id,parametro_editar,valor):
+def editar(file:str,lista:list,id:str,parametro_editar:int,valor:int):
     for i in lista:
         if int(i["id"])==id:
             i[parametro_editar]=valor

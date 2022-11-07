@@ -1,7 +1,7 @@
 import requests
 import os
 
-url_general="https://pokeapi.co/api/v2/"
+url_general:str="https://pokeapi.co/api/v2/"
 
 def abrir_json(url:str)->dict:
     peticion=requests.get(url)
@@ -28,7 +28,7 @@ def mostrar_opciones(url: str)->list:
     return lista_opciones
 
 #listar pokemones
-def listar_pokemones_1(url, numero):
+def listar_pokemones_1(url:str, numero:int):
     datos_del_url=abrir_json(url)
     results=datos_del_url["results"]
     url_numero=""
@@ -55,7 +55,7 @@ def listar_pokemones_1(url, numero):
 
 # Listar pokemon 2
 
-def listar_pokemones_2(url, numero):
+def listar_pokemones_2(url:str, numero:int):
     datos_url=abrir_json(url)
     results=datos_url["results"]
     url_numero=""
