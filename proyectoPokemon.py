@@ -146,7 +146,7 @@ def main():
             if opciones_busqueda == len(opcionesHabilidad)+1:
                 continue
 
-            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma)+1:   
+            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesHabilidad)+1:   
                 opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
             
             listar_pokemones_2(url_habilidad,opciones_busqueda)
@@ -163,7 +163,7 @@ def main():
             if opciones_busqueda == len(opciones_habitat)+1:
                 continue
             
-            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma)+1:   
+            while opciones_busqueda < 1 or opciones_busqueda > len(opciones_habitat)+1:   
                 opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
 
             listar_pokemones_1(url_habitat,opciones_busqueda)
@@ -180,7 +180,7 @@ def main():
             if opciones_busqueda == len(opciones_tipo)+1:
                 continue
 
-            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma)+1:   
+            while opciones_busqueda < 1 or opciones_busqueda > len(opciones_tipo)+1:   
                 opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
 
             listar_pokemones_2(url_tipo,opciones_busqueda)
