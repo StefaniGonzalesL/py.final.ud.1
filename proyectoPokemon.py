@@ -17,16 +17,17 @@ url_habitat=datos_json["pokemon-habitat"]
 url_tipo=datos_json["type"]
 
 
-#Listar por generacion
-def listar_por_generacion(url,numero_generacion):
-    datos_generacion=abrir_json(url)
-    results=datos_generacion["results"]
-    url_num_gen=""
+
+#listar pokemones
+def listar_pokemones_1(url, numero):
+    datos_del_url=abrir_json(url)
+    results=datos_del_url["results"]
+    url_numero=""
     for i in results:
-        if numero_generacion==results.index(i)+1:
-            url_num_gen=i["url"]
-    datos_numero_generacion=abrir_json(url_num_gen)
-    pokemones=datos_numero_generacion["pokemon_species"]
+        if numero==results.index(i)+1:
+            url_numero=i["url"]
+    datos_numero=abrir_json(url_numero)
+    pokemones=datos_numero["pokemon_species"]
 
     for i in pokemones:
         nombre=i["name"]
@@ -42,8 +43,6 @@ def listar_por_generacion(url,numero_generacion):
 
         dic_datos_pokemon={"nombre":nombre,"habilidades":lista_nombre_habilidad,"URL imagen":url_imagen}
         print(dic_datos_pokemon)
-
-
 
 def main():
     enEjecucion = True
