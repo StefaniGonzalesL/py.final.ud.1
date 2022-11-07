@@ -44,6 +44,36 @@ def listar_pokemones_1(url, numero):
         dic_datos_pokemon={"nombre":nombre,"habilidades":lista_nombre_habilidad,"URL imagen":url_imagen}
         print(dic_datos_pokemon)
 
+# Listar pokemon 2
+
+def listar_pokemones_2(url, numero):
+    datos_url=abrir_json(url)
+    results=datos_url["results"]
+    url_numero=""
+    for i in results:
+        if numero==results.index(i)+1:
+            url_numero=i["url"]
+    datos_numero=abrir_json(url_numero)
+
+    poke=datos_numero["pokemon"]
+    pokemones=[]
+    for i in poke:
+        pokemones.append(i["pokemon"])
+
+    for i in pokemones:
+        nombre=i["name"]
+        datos_pokemon=abrir_json(i["url"])
+        id_pokemon=datos_pokemon["id"]
+        pokemon=abrir_json(f"https://pokeapi.co/api/v2/pokemon/{id_pokemon}/")
+        habilidad_pokemon=pokemon["abilities"]
+        lista_nombre_habilidad=[]
+        for n in habilidad_pokemon:
+            lista_nombre_habilidad.append(n["ability"]["name"])
+        sprites_pokemon=pokemon["sprites"]
+        url_imagen=sprites_pokemon["front_default"]
+        dic_datos_pokemon={"nombre":nombre,"habilidades":lista_nombre_habilidad,"URL imagen":url_imagen}
+        print(dic_datos_pokemon)
+
 def main():
     enEjecucion = True
 
