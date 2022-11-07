@@ -1,5 +1,4 @@
 id,titulo,genero,ISBN,editorial,autores
 4,Hola Mundo,aventura,0-7645-2641-3,Alba,"['ddd', 'fff']"
-3,Moises y los diez Mandamientos,ficcion,452-6255879-009,Alba,['moises']
 123,Zalomo,ficcion,766-877,Alba,"['Oswaldo', 'Stefany']"
 14,Abcccs,ficcion,766-877,Alba,"['Moises','Stefany']"

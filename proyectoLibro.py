@@ -132,6 +132,8 @@ def main():
     file = "libros.csv"
     lista_libros = leer_archivos_disco(file)
 
+    print("BIENVENIDO A LA BIBLIOTECA")
+
     while (enEjecucion):
         input("holaaa presione cuaquier tecla para continuar")
         os.system("cls")
