@@ -17,7 +17,7 @@ url_habitat=datos_json["pokemon-habitat"]
 url_tipo=datos_json["type"]
 
 
-
+#Listar por generacion
 def listar_por_generacion(url,numero_generacion):
     datos_generacion=abrir_json(url)
     results=datos_generacion["results"]
@@ -72,10 +72,10 @@ def main():
         
         elif opcion == 2:
            os.system("cls")
-           opciones_busqueda = int(input("Ingresa una forma: \n")) #llamar a la lista de formas
+           opciones_busqueda = input("Ingresa una forma: \n") #llamar a la lista de formas
            print(opciones_busqueda)
-
-        
+    
+           
         elif opcion ==3:
             os.system("cls")
             opciones_busqueda = int(input("Ingresa una habilidad: \n"))
