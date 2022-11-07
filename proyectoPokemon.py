@@ -85,9 +85,11 @@ def listar_pokemones_2(url, numero):
 
 def main():
     enEjecucion = True
+    
+    print("Bienvenido a la API Pokemon")
 
     while (enEjecucion):
-        input("hola, presione cuaquier tecla para continuar")
+        input("Presione cuaquier tecla para continuar")
         os.system("cls")
         print("Opciones: ")
         print("1: Listar pokemons por generación")
@@ -114,7 +116,6 @@ def main():
             while opciones_busqueda < 1 or opciones_busqueda > len(opcionesGeneracion)+1:   
                 opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
             
-
             listar_pokemones_1(url_generacion,opciones_busqueda)
         
         elif opcion == 2:
@@ -145,6 +146,9 @@ def main():
             if opciones_busqueda == len(opcionesHabilidad)+1:
                 continue
 
+            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma)+1:   
+                opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
+            
             listar_pokemones_2(url_habilidad,opciones_busqueda)
 
         elif opcion ==4:
@@ -158,6 +162,9 @@ def main():
             
             if opciones_busqueda == len(opciones_habitat)+1:
                 continue
+            
+            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma)+1:   
+                opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
 
             listar_pokemones_1(url_habitat,opciones_busqueda)
 
@@ -172,6 +179,9 @@ def main():
             
             if opciones_busqueda == len(opciones_tipo)+1:
                 continue
+
+            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma)+1:   
+                opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
 
             listar_pokemones_2(url_tipo,opciones_busqueda)
 
