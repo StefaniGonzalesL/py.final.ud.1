@@ -3,12 +3,12 @@ import os
 
 url_general="https://pokeapi.co/api/v2/"
 
-def leer_json(url:str)->dict:
+def abrir_json(url:str)->dict:
     peticion=requests.get(url)
     return peticion.json()
 
 
-datos_json=leer_json(url_general)
+datos_json=abrir_json(url_general)
 
 url_generacion=datos_json["generation"]
 url_forma=datos_json["pokemon-shape"]
@@ -17,8 +17,32 @@ url_habitat=datos_json["pokemon-habitat"]
 url_tipo=datos_json["type"]
 
 
-def listarPokemonGeneracion(urlGeneracion, numeroGeneracion):
-    pass
+
+def listar_por_generacion(url,numero_generacion):
+    datos_generacion=abrir_json(url)
+    results=datos_generacion["results"]
+    url_num_gen=""
+    for i in results:
+        if numero_generacion==results.index(i)+1:
+            url_num_gen=i["url"]
+    datos_numero_generacion=abrir_json(url_num_gen)
+    pokemones=datos_numero_generacion["pokemon_species"]
+
+    for i in pokemones:
+        nombre=i["name"]
+        datos_pokemon=abrir_json(i["url"])
+        id_pokemon=datos_pokemon["id"]
+        pokemon=abrir_json(f"https://pokeapi.co/api/v2/pokemon/{id_pokemon}/")
+        habilidad_pokemon=pokemon["abilities"]
+        lista_nombre_habilidad=[]
+        for n in habilidad_pokemon:
+            lista_nombre_habilidad.append(n["ability"]["name"])
+        sprites_pokemon=pokemon["sprites"]
+        url_imagen=sprites_pokemon["front_default"]
+
+        dic_datos_pokemon={"nombre":nombre,"habilidades":lista_nombre_habilidad,"URL imagen":url_imagen}
+        print(dic_datos_pokemon)
+
 
 
 def main():
@@ -43,6 +67,8 @@ def main():
 
             while opciones_busqueda < 1 or opciones_busqueda > 8:   
                 opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
+
+            listar_por_generacion(url_generacion,opciones_busqueda)
         
         elif opcion == 2:
            os.system("cls")
