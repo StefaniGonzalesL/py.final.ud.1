@@ -104,10 +104,16 @@ def main():
             opcionesGeneracion=mostrar_opciones(url_generacion)
             for i in opcionesGeneracion:
                 print(i)
-            opciones_busqueda = int(input(f"Ingresa una generación del 1 al {len(opcionesGeneracion)}: \n"))
+            print(f"{len(opcionesGeneracion)+1}. Regresar al menu anterior")
+                
+            opciones_busqueda = int(input(f"Ingresa una generación del 1 al {len(opcionesGeneracion)+1}: \n"))
 
-            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesGeneracion):   
+            if opciones_busqueda == len(opcionesGeneracion)+1:
+                continue
+            
+            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesGeneracion)+1:   
                 opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
+            
 
             listar_pokemones_1(url_generacion,opciones_busqueda)
         
@@ -116,8 +122,13 @@ def main():
             opcionesForma=mostrar_opciones(url_forma)
             for i in opcionesForma:
                 print(i)
-            opciones_busqueda = int(input(f"Ingresa una opcion para forma de 1 a {len(opcionesForma)} \n")) #llamar a la lista de formas
-            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma):   
+            print(f"{len(opcionesForma)+1}. Regresar al menu anterior")
+            opciones_busqueda = int(input(f"Ingresa una opcion para forma de 1 a {len(opcionesForma)+1} \n")) #llamar a la lista de formas
+            
+            if opciones_busqueda == len(opcionesForma)+1:
+                continue
+            
+            while opciones_busqueda < 1 or opciones_busqueda > len(opcionesForma)+1:   
                 opciones_busqueda = int(input("Opcion Incorrecta, ingrese nuevamente una opcion valida\n"))
 
             listar_pokemones_1(url_forma,opciones_busqueda)
@@ -127,8 +138,13 @@ def main():
             opcionesHabilidad=mostrar_opciones(url_habilidad)
             for i in opcionesHabilidad:
                 print(i)
-            opciones_busqueda = int(input(f"Ingresa una opcion para habilidad del 1 a {len(opcionesHabilidad)} \n"))
+            print(f"{len(opcionesHabilidad)+1}. Regresar al menu anterior")
+
+            opciones_busqueda = int(input(f"Ingresa una opcion para habilidad del 1 a {len(opcionesHabilidad)+1} \n"))
             
+            if opciones_busqueda == len(opcionesHabilidad)+1:
+                continue
+
             listar_pokemones_2(url_habilidad,opciones_busqueda)
 
         elif opcion ==4:
@@ -137,8 +153,12 @@ def main():
             for i in opciones_habitat:
                 print(i)
 
-            opciones_busqueda = int(input(f"Ingresa una opcion para habitat del 1 a {len(opciones_habitat)} \n"))
+            print(f"{len(opciones_habitat)+1}. Regresar al menu anterior")
+            opciones_busqueda = int(input(f"Ingresa una opcion para habitat del 1 a {len(opciones_habitat)+1} \n"))
             
+            if opciones_busqueda == len(opciones_habitat)+1:
+                continue
+
             listar_pokemones_1(url_habitat,opciones_busqueda)
 
         elif opcion ==5:
@@ -146,9 +166,13 @@ def main():
             opciones_tipo=mostrar_opciones(url_tipo)
             for i in opciones_tipo:
                 print(i)
+            print(f"{len(opciones_tipo)+1}. Regresar al menu anterior")
 
-            opciones_busqueda = int(input(f"Ingresa una opcion para tipo de pokemon del 1 al {len(opciones_tipo)}\n"))
+            opciones_busqueda = int(input(f"Ingresa una opcion para tipo de pokemon del 1 al {len(opciones_tipo)+1}\n"))
             
+            if opciones_busqueda == len(opciones_tipo)+1:
+                continue
+
             listar_pokemones_2(url_tipo,opciones_busqueda)
 
         elif opcion==6:
